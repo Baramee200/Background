@@ -208,12 +208,129 @@ textarea:hover,select:hover{border-color:var(--color-text-secondary)}
 .tips{background:var(--warm);color:var(--warm-ink);border:0;border-radius:16px;padding:12px 14px}
 .privacy{text-align:center}
 .bar{border-color:var(--line)}
+
+/* ================= v2 polish ================= */
+body{background:radial-gradient(900px 420px at 88% -8%,#E0E7FF 0,transparent 62%),radial-gradient(700px 360px at -5% 0,#FEF3C7 0,transparent 58%),var(--bg);background-repeat:no-repeat}
+.wrap{padding-top:36px}
+header h1{font-size:clamp(30px,5.5vw,46px);background:linear-gradient(135deg,#4263EB 10%,#7048E8 90%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;padding-bottom:4px}
+header p{color:var(--muted);font-size:16px}
+.steps{list-style:none;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0 0;padding:0}
+.steps li{display:inline-flex;align-items:center;gap:8px;padding:5px 14px 5px 6px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:14px;font-weight:600;color:var(--muted);transition:all .2s}
+.steps b{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--color-surface-subdued);font-size:13px}
+body:not(:has(.app.ready)) .steps li:nth-child(1),
+body:has(.app.ready) .steps li:nth-child(2){color:var(--accent-ink);background:var(--accent);border-color:var(--accent);box-shadow:0 4px 12px rgba(66,99,235,.25)}
+body:not(:has(.app.ready)) .steps li:nth-child(1) b,
+body:has(.app.ready) .steps li:nth-child(2) b{background:rgba(255,255,255,.25);color:#fff}
+body:has(.app.ready) .steps li:nth-child(1) b{background:var(--color-success-base);color:#fff;font-size:0}
+body:has(.app.ready) .steps li:nth-child(1) b::after{content:"✓";font-size:13px}
+body:has(.app.ready) .steps li:nth-child(1){color:var(--color-success-base)}
+@media (max-width:560px){.steps li:nth-child(3){display:none}}
+
+/* upload card */
+.drop{background:linear-gradient(180deg,#fff 0,#F5F7FF 100%);border:2px dashed #B8C4F5;border-radius:28px;min-height:380px;box-shadow:0 12px 40px rgba(66,99,235,.08)}
+.drop.over{border-color:var(--accent);background:var(--color-primary-surface);transform:scale(1.01)}
+.drop{transition:border-color .15s,background .15s,transform .15s}
+.pick,.primary{background:linear-gradient(135deg,#5470F3,#3B55DD)}
+.pick.alt{background:var(--chip)}
+
+/* preview */
+.stage{border-radius:24px;border-color:#E2E8F4}
+.canvasBox.checker{background:conic-gradient(#E6EBF5 25%,#fff 0 50%,#E6EBF5 0 75%,#fff 0) 0 0/16px 16px}
+.canvasBox{min-height:320px}
+.meta{background:#FAFBFF}
+#note{color:var(--color-warning-base);font-weight:600}
+
+/* panel as stacked cards */
+.panel{background:transparent;border:0;box-shadow:none;padding:2px}
+@media (min-width:880px){
+  .app.ready > .panel{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding:2px 6px 2px 2px;scrollbar-width:thin}
+}
+.sec{margin:0 0 12px;padding:16px;background:#fff;border:1px solid #E2E8F4;border-radius:22px;box-shadow:0 1px 3px rgba(30,41,59,.05)}
+.panel{counter-reset:s}
+.sec-t{display:flex;align-items:center;gap:10px;margin:0 0 14px;padding:0;font-size:16px;font-weight:700;color:var(--ink);border:0}
+.sec-t::before{counter-increment:s;content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;background:var(--chip);color:var(--chip-ink);display:grid;place-items:center;font-size:13px;font-weight:700}
+.sec .field:last-child{margin-bottom:0}
+.sec>.check{margin:4px 0 0}
+.sec legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.sec fieldset.field{position:relative}
+.link{background:var(--chip);padding:3px 11px;border-radius:999px;font-size:13px}
+.link:hover{background:#DBE4FF}
+.hint{color:#64748B}
+
+/* collapsible text section */
+.fold{padding:0}
+.fold>summary{list-style:none;cursor:pointer;margin:0;padding:16px;border-radius:22px}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::after{content:"";margin-left:auto;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.fold[open]>summary::after{transform:rotate(-135deg) translateY(-2px)}
+.fold>summary:hover{background:var(--color-surface-bg)}
+.fold .opt{font-size:12px;font-weight:600;color:var(--warm-ink);background:var(--warm);padding:2px 9px;border-radius:999px}
+.foldbody{padding:0 16px 16px}
+.foldbody .field:first-child{margin-top:0}
+
+/* sliders with filled track */
+input[type=range]{-webkit-appearance:none;appearance:none;height:28px;background:transparent;margin:6px 0 0;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:99px;background:linear-gradient(to right,var(--accent) var(--p,30%),#DCE3F5 var(--p,30%))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-8px;border-radius:50%;background:#fff;border:2px solid var(--accent);box-shadow:0 2px 8px rgba(66,99,235,.35)}
+input[type=range]::-moz-range-track{height:6px;border-radius:99px;background:#DCE3F5}
+input[type=range]::-moz-range-progress{height:6px;border-radius:99px;background:var(--accent)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--accent);box-shadow:0 2px 8px rgba(66,99,235,.35)}
+.scale{padding:6px 11px 0;margin-top:0;font-size:12px;font-weight:500;color:#64748B}
+.scale span{width:0;min-width:0;display:flex;justify-content:center;white-space:nowrap}
+.scale span::before{top:-6px;height:5px;width:1px;background:#B6C0D6}
+
+/* floating save bar */
+.savebar{position:sticky;bottom:calc(env(safe-area-inset-bottom,0px) + 10px);z-index:6;display:flex;gap:8px;margin:4px 0 12px;padding:10px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid #E2E8F4;border-radius:999px;box-shadow:0 10px 30px rgba(30,41,59,.18)}
+.savebar .primary{flex:1;width:auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px}
+.btn2{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;padding:0 18px;background:var(--chip);color:var(--chip-ink);font-weight:600;cursor:pointer;white-space:nowrap;transition:background .15s}
+.btn2:hover:not(:disabled){background:#DBE4FF}
+.btn2:disabled{opacity:.5;cursor:not-allowed}
+.btn2 .ic,.primary .ic{width:18px;height:18px}
+
+/* toast status */
+#status:not(:empty){position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 86px);transform:translateX(-50%);z-index:30;max-width:90vw;margin:0;padding:10px 18px;border-radius:999px;background:#0F172A;color:#fff;font-weight:600;box-shadow:0 10px 30px rgba(15,23,42,.3);text-align:center}
+#status.ok:not(:empty){background:#0D9488}
+#status.warn:not(:empty){background:#B45309}
+
+.tips{margin-top:4px}
+.tips p::before{content:"💡 "}
+
+/* draw dialog */
+@media (pointer:fine){.actions{max-width:560px;flex-wrap:wrap}}
+.dlg{position:fixed;inset:0;z-index:40;display:flex;align-items:flex-end;justify-content:center;background:rgba(15,23,42,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.dlg-card{width:100%;max-width:800px;max-height:100dvh;overflow:auto;background:#fff;border-radius:28px 28px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px));box-shadow:0 -10px 40px rgba(15,23,42,.25)}
+@media (min-width:700px){.dlg{align-items:center;padding:20px}.dlg-card{border-radius:28px}}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dlg-head h2{margin:0;font-size:20px}
+.x{width:36px;height:36px;border:0;border-radius:50%;background:var(--color-surface-subdued);font-size:22px;line-height:1;cursor:pointer}
+.x:hover{background:#E2E8F0}
+.pad{position:relative;height:clamp(220px,42vh,400px);overflow:hidden;border:1.5px solid #CBD5E1;border-radius:20px;
+  background:linear-gradient(transparent calc(70% - 1px),#D5DCEB calc(70% - 1px) 70%,transparent 70%),#fff;box-shadow:inset 0 2px 8px rgba(30,41,59,.05)}
+.pad canvas{position:absolute;inset:0;touch-action:none;cursor:crosshair}
+.pad-hint{position:absolute;inset:0;display:grid;place-items:center;color:#94A3B8;font-size:16px;pointer-events:none}
+.dlg-tools{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-top:14px}
+.dlg-tools .swatches{margin-top:0}
+.penw{display:flex;align-items:center;gap:10px;flex:1;min-width:210px}
+.penw label{font-weight:600;font-size:14px;white-space:nowrap}
+.penw input[type=range]{flex:1;margin:0;min-width:80px}
+.pdot{flex:none;display:block;border-radius:50%;background:#111;width:6px;height:6px}
+.pbtns{display:flex;gap:8px;margin-left:auto}
+.pbtns .btn2{padding:8px 16px}
+.dlg-foot{display:flex;gap:10px;margin-top:16px}
+.dlg-foot .btn2{padding:0 22px;min-height:48px}
+.dlg-foot .primary{flex:1;width:auto}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1>ลายเซ็นพื้นใส</h1>
+    <p>แปลงรูปถ่ายลายเซ็น หรือวาดลายเซ็นเองบนหน้าจอ เป็นไฟล์ PNG พื้นหลังโปร่งใส พร้อมวางลงเอกสารได้ทันที</p>
+    <ol class="steps" aria-label="ขั้นตอน">
+      <li><b>1</b>เพิ่มหรือวาด</li>
+      <li><b>2</b>ปรับให้คมชัด</li>
+      <li><b>3</b>บันทึก PNG</li>
+    </ol>
   </header>
 
   <main class="app" id="app">
@@ -231,11 +348,12 @@ textarea:hover,select:hover{border-color:var(--color-text-secondary)}
           <path class="flourish" pathLength="1" d="M13 44 C 73 36, 149 38, 231 32"/>
         </svg>
         <strong>เพิ่มรูปลายเซ็น</strong>
-        <span class="sub mobile-only"><span class="nw">ถ่ายรูปลายเซ็นบนกระดาษ</span> <span class="nw">หรือเลือกรูปที่มีอยู่ในเครื่อง</span></span>
-        <span class="sub desktop-only">เลือกรูปจากเครื่อง หรือลากไฟล์มาวางตรงนี้</span>
+        <span class="sub mobile-only"><span class="nw">ถ่ายรูปลายเซ็นบนกระดาษ</span> <span class="nw">หรือเลือกรูปที่มีอยู่ในเครื่อง</span> <span class="nw">หรือวาดเองบนหน้าจอ</span></span>
+        <span class="sub desktop-only">เลือกรูปจากเครื่อง ลากไฟล์มาวางตรงนี้ กด Ctrl+V หรือวาดลายเซ็นเองบนหน้าจอก็ได้</span>
         <div class="actions">
           <button type="button" class="pick cam mobile-only" data-src="camera"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>ถ่ายรูป</button>
           <button type="button" class="pick alt" data-src="file"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M4 17l5-5 4 4 3-3 4 4"/></svg>เลือกรูปจากเครื่อง</button>
+          <button type="button" class="pick alt" data-draw><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11a2.1 2.1 0 0 0-3-3L5 16z"/><path d="M14 7l3 3"/></svg>วาดลายเซ็น</button>
         </div>
       </div>
       <input type="file" id="file" accept="image/*" class="sr" tabindex="-1">
@@ -255,7 +373,7 @@ textarea:hover,select:hover{border-color:var(--color-text-secondary)}
           <button data-bg="white" aria-pressed="false">ขาว</button>
           <button data-bg="dark" aria-pressed="false">เข้ม</button>
         </div>
-        <div class="repl"><button class="ghost mobile-only" data-src="camera"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>ถ่ายใหม่</button><button class="ghost" data-src="file"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M4 17l5-5 4 4 3-3 4 4"/></svg>เลือกรูปใหม่</button></div>
+        <div class="repl"><button class="ghost mobile-only" data-src="camera"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>ถ่ายใหม่</button><button class="ghost" data-src="file"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M4 17l5-5 4 4 3-3 4 4"/></svg>เลือกรูปใหม่</button><button class="ghost" data-draw><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11a2.1 2.1 0 0 0-3-3L5 16z"/><path d="M14 7l3 3"/></svg>วาดเอง</button></div>
       </div>
     </div>
 
@@ -265,6 +383,7 @@ textarea:hover,select:hover{border-color:var(--color-text-secondary)}
     </section>
 
     <aside class="panel" id="panel" hidden>
+      <div class="sec"><h2 class="sec-t">ตัดพื้นหลัง</h2>
       <div class="field">
         <div class="row"><label for="t">ระดับการตัดพื้น <output class="val" id="t-val" for="t"></output></label><button class="link" id="auto">ค่าอัตโนมัติ</button></div>
         <input type="range" id="t" min="1" max="10" step="1" value="4">
@@ -281,6 +400,8 @@ textarea:hover,select:hover{border-color:var(--color-text-secondary)}
         <input type="range" id="speck" min="1" max="10" step="1" value="3">
         <div class="scale" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
       </div>
+      </div>
+      <div class="sec"><h2 class="sec-t">สีหมึก</h2>
       <fieldset class="field">
         <legend>สีหมึก</legend>
         <div class="swatches" id="swatches">
@@ -292,7 +413,8 @@ textarea:hover,select:hover{border-color:var(--color-text-secondary)}
       </fieldset>
       <label class="check"><input type="checkbox" id="crop" checked>ตัดพื้นที่ว่างรอบลายเซ็นออก</label>
 
-      <h2 class="group">ข้อความประกอบลายเซ็น</h2>
+      </div>
+      <details class="sec fold"><summary class="sec-t">ข้อความประกอบลายเซ็น <span class="opt">ไม่บังคับ</span></summary><div class="foldbody">
       <div class="field">
         <label for="above">ข้อความเหนือรูปลายเซ็น</label>
         <textarea id="above" class="txt sarabun" rows="2"></textarea>
@@ -335,7 +457,11 @@ textarea:hover,select:hover{border-color:var(--color-text-secondary)}
           <button data-tcolor="ink" aria-pressed="false">ตามสีหมึก</button>
         </div>
       </div>
-      <button class="primary" id="save">บันทึกเป็น PNG</button>
+      </div></details>
+      <div class="savebar">
+        <button class="primary" id="save"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19h14"/></svg>บันทึกเป็น PNG</button>
+        <button class="btn2" id="copy" type="button" title="คัดลอกรูปไปวางในเอกสาร"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"/><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/></svg>คัดลอก</button>
+      </div>
       <p id="status" role="status"></p>
       <div class="tips">
         <p>ถ่ายในที่สว่าง แสงสม่ำเสมอ และเลี่ยงเงามือหรือเงาโทรศัพท์</p>
@@ -343,6 +469,36 @@ textarea:hover,select:hover{border-color:var(--color-text-secondary)}
       </div>
     </aside>
   </main>
+</div>
+
+<div class="dlg" id="dlg" hidden role="dialog" aria-modal="true" aria-label="วาดลายเซ็น">
+  <div class="dlg-card">
+    <div class="dlg-head"><h2>วาดลายเซ็น</h2><button type="button" class="x" id="dClose" aria-label="ปิด">×</button></div>
+    <div class="pad" id="pad">
+      <canvas id="padc"></canvas>
+      <span class="pad-hint" id="padHint">เซ็นชื่อตรงนี้ด้วยนิ้ว เมาส์ หรือปากกา</span>
+    </div>
+    <div class="dlg-tools">
+      <div class="swatches" id="penColors" role="group" aria-label="สีปากกา">
+        <button type="button" class="sw" data-pen="#111111" aria-pressed="true"><span class="dot" style="background:#111111"></span>ดำ</button>
+        <button type="button" class="sw" data-pen="#1D3FBF" aria-pressed="false"><span class="dot" style="background:#1D3FBF"></span>น้ำเงิน</button>
+        <button type="button" class="sw" data-pen="custom" aria-pressed="false"><input type="color" id="penCustom" value="#0B6E4F" aria-label="เลือกสีเอง">กำหนดเอง</button>
+      </div>
+      <div class="penw">
+        <label for="penW">ความหนาเส้น</label>
+        <input type="range" id="penW" min="1" max="10" step="1" value="4">
+        <span class="pdot" id="pdot" aria-hidden="true"></span>
+      </div>
+      <div class="pbtns">
+        <button type="button" class="btn2" id="dUndo">ย้อนกลับ</button>
+        <button type="button" class="btn2" id="dClear">ล้าง</button>
+      </div>
+    </div>
+    <div class="dlg-foot">
+      <button type="button" class="btn2" id="dCancel">ยกเลิก</button>
+      <button type="button" class="primary" id="dUse">ใช้ลายเซ็นนี้</button>
+    </div>
+  </div>
 </div>
 
 <div class="sheet" id="sheet" hidden>
@@ -584,7 +740,7 @@ textarea:hover,select:hover{border-color:var(--color-text-secondary)}
   function compose(){
     const top = lines('#above'), bot = lines('#below');
     const hasSig = !S.empty, hasText = top.length || bot.length;
-    $('#save').disabled = !hasSig && !hasText;
+    $('#save').disabled = $('#copy').disabled = !hasSig && !hasText;
     if (!hasText) {
       out.width = sig.width; out.height = sig.height;
       out.getContext('2d').drawImage(sig, 0, 0);
@@ -661,6 +817,9 @@ textarea:hover,select:hover{border-color:var(--color-text-secondary)}
     $('#soft-val').textContent = $('#soft').value;
     $('#speck-val').textContent = $('#speck').value;
     $('#fsize-val').textContent = $('#fsize').value;
+    document.querySelectorAll('input[type=range]').forEach(r => {
+      r.style.setProperty('--p', ((r.value - r.min) / (r.max - r.min) * 100) + '%');
+    });
   }
   ['#t','#soft','#speck','#fsize'].forEach(id => $(id).addEventListener('input', showVals));
   showVals();
@@ -722,8 +881,135 @@ textarea:hover,select:hover{border-color:var(--color-text-secondary)}
     $('#sheet').hidden = false;
     status.textContent = '';
   });
+  $('#copy').addEventListener('click', async () => {
+    try {
+      const blob = await new Promise(r => out.toBlob(r, 'image/png'));
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+      status.className = 'ok'; status.textContent = 'คัดลอกรูปแล้ว วางลงในเอกสารได้เลย';
+    } catch (e) {
+      status.className = 'warn'; status.textContent = 'เบราว์เซอร์นี้คัดลอกรูปไม่ได้ ใช้ปุ่มบันทึกแทน';
+    }
+  });
+  new MutationObserver(() => {
+    if (status.textContent) { clearTimeout(status._t); status._t = setTimeout(() => { status.textContent = ''; }, 3800); }
+  }).observe(status, { childList:true, characterData:true, subtree:true });
   $('#closeSheet').addEventListener('click', () => { $('#sheet').hidden = true; });
   $('#sheet').addEventListener('click', e => { if (e.target.id === 'sheet') $('#sheet').hidden = true; });
+
+  /* ---------- Draw your own signature ---------- */
+  (function(){
+    const dlg = $('#dlg'), pad = $('#pad'), cv = $('#padc'), ctx = cv.getContext('2d');
+    const strokes = []; let cur = null, pen = '#111111', lvl = 4, dpr = 1, cw = 0, ch = 0, lastT = 0;
+    const base = () => 1.4 + (lvl - 1) * 0.75;
+    const mid = (a, b) => ({ x:(a.x + b.x) / 2, y:(a.y + b.y) / 2 });
+
+    function piece(c, k, s, i){
+      const p = s.pts, a = p[i-1], b = p[i];
+      const st = i === 1 ? a : mid(p[i-2], a), en = mid(a, b);
+      c.strokeStyle = s.c; c.lineCap = 'round'; c.lineJoin = 'round';
+      c.lineWidth = (a.w + b.w) / 2 * k;
+      c.beginPath(); c.moveTo(st.x*k, st.y*k); c.quadraticCurveTo(a.x*k, a.y*k, en.x*k, en.y*k); c.stroke();
+    }
+    function tail(c, k, s){
+      const p = s.pts, n = p.length;
+      if (n === 1) { c.fillStyle = s.c; c.beginPath(); c.arc(p[0].x*k, p[0].y*k, p[0].w*k/2, 0, Math.PI*2); c.fill(); return; }
+      const a = mid(p[n-2], p[n-1]), b = p[n-1];
+      c.strokeStyle = s.c; c.lineCap = 'round'; c.lineWidth = b.w * k;
+      c.beginPath(); c.moveTo(a.x*k, a.y*k); c.lineTo(b.x*k, b.y*k); c.stroke();
+    }
+    function paintAll(c, k){ strokes.forEach(s => { for (let i = 1; i < s.pts.length; i++) piece(c, k, s, i); tail(c, k, s); }); }
+
+    function ui(){
+      const has = strokes.length > 0;
+      $('#padHint').hidden = has;
+      $('#dUndo').disabled = $('#dClear').disabled = $('#dUse').disabled = !has;
+    }
+    function redraw(){ ctx.clearRect(0, 0, cv.width, cv.height); paintAll(ctx, dpr); ui(); }
+    function fit(){
+      cw = pad.clientWidth; ch = pad.clientHeight; if (!cw) return;
+      dpr = Math.min(3, window.devicePixelRatio || 1);
+      cv.width = Math.round(cw * dpr); cv.height = Math.round(ch * dpr);
+      cv.style.width = cw + 'px'; cv.style.height = ch + 'px';
+      redraw();
+    }
+    function open(){ dlg.hidden = false; document.body.style.overflow = 'hidden'; requestAnimationFrame(fit); }
+    function close(){ dlg.hidden = true; document.body.style.overflow = ''; }
+
+    function addPt(e){
+      const r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      const pts = cur.pts, pr = pts[pts.length - 1];
+      if (pr && Math.hypot(x - pr.x, y - pr.y) < 1) return;
+      let w;
+      if (e.pointerType === 'pen' && e.pressure > 0) w = base() * (0.45 + 1.1 * e.pressure);
+      else if (pr) {
+        const v = Math.hypot(x - pr.x, y - pr.y) / Math.max(1, e.timeStamp - lastT);
+        const tg = base() * Math.min(1.25, Math.max(0.55, 1.3 - v * 0.5));
+        w = pr.w * 0.75 + tg * 0.25;
+      } else w = base();
+      lastT = e.timeStamp;
+      pts.push({ x, y, w });
+      if (pts.length > 1) piece(ctx, dpr, cur, pts.length - 1);
+    }
+    cv.addEventListener('pointerdown', e => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      e.preventDefault();
+      try { cv.setPointerCapture(e.pointerId); } catch (err) {}
+      cur = { c:pen, pts:[] }; strokes.push(cur); lastT = e.timeStamp;
+      addPt(e); ui();
+    });
+    cv.addEventListener('pointermove', e => {
+      if (!cur) return;
+      const list = e.getCoalescedEvents ? e.getCoalescedEvents() : [];
+      (list.length ? list : [e]).forEach(addPt);
+    });
+    const end = () => { if (!cur) return; if (cur.pts.length) tail(ctx, dpr, cur); else strokes.pop(); cur = null; ui(); };
+    cv.addEventListener('pointerup', end);
+    cv.addEventListener('pointercancel', end);
+
+    function undo(){ if (cur) return; strokes.pop(); redraw(); }
+    $('#dUndo').addEventListener('click', undo);
+    $('#dClear').addEventListener('click', () => { strokes.length = 0; redraw(); });
+    $('#dClose').addEventListener('click', close);
+    $('#dCancel').addEventListener('click', close);
+    document.addEventListener('keydown', e => {
+      if (dlg.hidden) return;
+      if (e.key === 'Escape') close();
+      else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undo(); }
+    });
+    window.addEventListener('resize', () => { if (!dlg.hidden) fit(); });
+    document.querySelectorAll('[data-draw]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); open(); }));
+
+    const pcol = $('#penColors');
+    function pdot(){
+      const d = $('#pdot'), s = Math.round(base() * 1.6);
+      d.style.width = d.style.height = s + 'px'; d.style.background = pen;
+      $('#penW').style.setProperty('--p', (($('#penW').value - 1) / 9 * 100) + '%');
+    }
+    pcol.querySelectorAll('.sw').forEach(b => b.addEventListener('click', () => {
+      pen = b.dataset.pen === 'custom' ? $('#penCustom').value : b.dataset.pen;
+      press(pcol, b); pdot();
+    }));
+    $('#penCustom').addEventListener('input', e => {
+      pen = e.target.value; press(pcol, pcol.querySelector('[data-pen="custom"]')); pdot();
+    });
+    $('#penW').addEventListener('input', e => { lvl = +e.target.value; pdot(); });
+    pdot(); ui();
+
+    $('#dUse').addEventListener('click', () => {
+      if (!strokes.length) return;
+      const k = Math.max(2, 1600 / cw), c = document.createElement('canvas');
+      c.width = Math.round(cw * k); c.height = Math.round(ch * k);
+      const x = c.getContext('2d'); x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, c.width, c.height);
+      paintAll(x, k);
+      const img = new Image();
+      img.onload = () => {
+        showError(''); S.name = 'signature';
+        try { prepare(img); } catch (err) { showError('ประมวลผลลายเซ็นนี้ไม่ได้ ลองวาดใหม่อีกครั้ง'); }
+        close();
+      };
+      img.src = c.toDataURL('image/png');
+    });
+  })();
 })();
 </script>
 </body>
